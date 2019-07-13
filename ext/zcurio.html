@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url('./css/bootstrap.min.css');
+            @import url('./css/main.css');            
+        </style>
+    </head>
+    <body>
+      <main class="container">
+        <div class="row">
+          <div class="col-6">
+            <h5>Proposed Solution:</h5>
+            <hr />
+            <section data-bind="foreach: plaintext().match(/.{1,17}/g)">
+              <pre data-bind="text: $data.split('').join(' ')"></pre>
+            </section>
+          </div>
+          <div class="col-6">
+            <h5>Key Editor:</h5>
+            <hr />
+            <section data-bind="foreach: key" class="editor-block text-center">
+              <div>
+                <div data-bind="text: $root.alphabet[$index()]"></div>
+                <input data-bind="textInput: val, event: { focus:$root.all, keyup:$root.all }" size="1" maxlength="1" class="text-center" />
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="row break">
+          <hr />
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h5>Proposed Key:</h5>
+            <section class="key-block">
+              <span data-bind="text: key().map(v => v.val()).join('')"></span>
+              <div data-bind="visible: error, text: error" class="alert alert-warning"></div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </body>
+</html>
