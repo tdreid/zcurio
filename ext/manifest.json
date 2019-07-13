@@ -1,6 +1,6 @@
 {
    "name":"Zodiac Cipher Curio",
-   "description":"A chrome extension for trying various substitution keys against the infamous Zodiac 340 cipher",
+   "description":"A Chrome extension for trying various substitution keys against the infamous Zodiac 340 cipher",
    "version":"0.1.0",
    "manifest_version":2,
    "background":{
