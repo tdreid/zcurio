@@ -1,0 +1,36 @@
+{
+  "name": "zcurio",
+  "version": "0.1.0",
+  "description": "A Chrome extension for trying various substitution keys against the infamous Zodiac 340 cipher",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdreid/zcurio.git"
+  },
+  "keywords": [
+    "zodiac",
+    "killer",
+    "cipher",
+    "340",
+    "unsolved",
+    "tool"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tdreid/zcurio/issues"
+  },
+  "homepage": "https://github.com/tdreid/zcurio#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-preset-minify": "^0.5.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "lodash": ">=4.17.13"
+  },
+  "dependencies": {}
+}
