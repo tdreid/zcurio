@@ -12,8 +12,8 @@
           <div class="col-6">
             <h5>Proposed Solution:</h5>
             <hr />
-            <section data-bind="foreach: plaintext().match(/.{1,17}/g)">
-              <pre data-bind="text: $data.split('').join(' ')"></pre>
+            <section data-bind="foreach: plaintextRows">
+              <pre data-bind="text: $data"></pre>
             </section>
           </div>
           <div class="col-6">
@@ -34,11 +34,14 @@
           <div class="col-12">
             <h5>Proposed Key:</h5>
             <section class="key-block">
-              <span data-bind="text: key().map(v => v.val()).join('')"></span>
+              <span data-bind="text: displayKey"></span>
               <div data-bind="visible: error, text: error" class="alert alert-warning"></div>
             </section>
           </div>
         </div>
       </main>
+      <script src="./js/knockout-min.js"></script>
+      <script src="./js/knockout-secure-binding.min.js"></script>
+      <script src="zcurio.min.js"></script>
     </body>
 </html>
