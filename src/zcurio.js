@@ -1,3 +1,5 @@
+const rng = require('lodash/random');
+
 ko.extenders.restricted = target => {
   const result = ko.pureComputed({
     read: target,
@@ -57,6 +59,23 @@ const cipherCurioViewModel = function() {
     return cipher.split('').map(ltr => decode(ltr)).join('');
   });
   self.plaintextRows = ko.computed(() => self.plaintext().match(/.{1,17}/g).map(l => l.split('').join(' ')));
+  self.setRandomKey = () => {
+    const result = [];
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
+    self.key().forEach(l => result.push(chars.charAt(rng(chars.length-1))));
+    self.key(result.map(c => {
+      const r = new observableCharacter();
+      r.val(c);
+      return r;
+    }));
+  };
+  self.resetKey = () => {
+    self.key("?".repeat(63).split('').map(c => {
+      const r = new observableCharacter();
+      r.val(c);
+      return r
+    }));
+  };
 }
 
 function bindSecureModel() {
