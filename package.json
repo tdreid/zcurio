@@ -1,6 +1,6 @@
 {
   "name": "zcurio",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Chrome extension for trying various substitution keys against the infamous Zodiac 340 cipher",
   "main": "index.js",
   "scripts": {
