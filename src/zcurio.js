@@ -27,8 +27,6 @@ const cipherCurioViewModel = function() {
     'HER>pl^VPk|1LTG2dNp+B(#O%DWY.<*Kf)By:cM+UZGW()L#zHJSpp7^l8*V3pO++RK2_9M+ztjd|5FP+&4k/p8R^FlO-*dCkF>2D(#5+Kq%;2UcXGV.zL|(G2Jfj#O+_NYz+@L9d<M+b+ZR2FBcyA64K-zlUV+^J+Op7<FBy-U+R/5tE|DYBpbTMKO2<clRJ|*5T4M.+&BFz69Sy#+N|5FBc(;8RlGFN^f524b.cV4t++yBX1*:49CE>VUZ5-+|c.3zBK(Op^.fMqG2RcT+L16C<+FlWB|)L++)WCzWcPOSHT/()p|FkdW<7tB_YOB*-Cc>MDHNpkSzZO8A|K;+';
   const alphabet =
     'ABCDEFGH|JKLMNOPRSTUVWXYZ123456789plkdfycjqbtz()>^+.<-/#_@*%&;:';
-  const plainChars =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_';
 
   const observableCharacter = function() {
     const self = this;
@@ -99,10 +97,18 @@ const cipherCurioViewModel = function() {
     let result = '';
     self
       .key()
-      .forEach(() => (result += plainChars.charAt(rng(plainChars.length - 1))));
+      .forEach(() => (result += self.plainChars().charAt(rng(self.plainChars().length - 1))));
     self.key(mapToObservableCharacters(result));
   };
   self.resetKey = () => self.key(mapToObservableCharacters('?'.repeat(63)));
+  self.useLetters = ko.observable(true);
+  self.useDigits = ko.observable(true);
+  self.useUnderscores = ko.observable(true);
+  self.plainChars = ko.computed(() => {
+    let result = self.useLetters() ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : '';
+    result += self.useDigits() ? '0123456789' : '';
+    result += self.useUnderscores ? '_' : '';
+  });
 };
 
 function bindSecureModel() {
