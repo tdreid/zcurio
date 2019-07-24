@@ -107,7 +107,8 @@ const cipherCurioViewModel = function() {
   self.plainChars = ko.computed(() => {
     let result = self.useLetters() ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : '';
     result += self.useDigits() ? '0123456789' : '';
-    result += self.useUnderscores ? '_' : '';
+    result += self.useUnderscores() ? '_' : '';
+    return result;
   });
 };
 
