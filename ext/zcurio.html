@@ -35,6 +35,18 @@
                 <button class="btn btn-primary" data-bind="click: setRandomKey">Random Key</button>
                 <button class="btn btn-secondary" data-bind="click: resetKey">Reset Key</button>
               </div>
+              <div class="form-check">
+                <input data-bind="checked: useLetters" type="checkbox" class="form-check-input" id="useLetters">
+                <label class="form-check-label" for="useLetters">Use Letters</label>
+              </div>
+              <div class="form-check">
+                  <input data-bind="checked: useDigits" type="checkbox" class="form-check-input" id="useDigits">
+                  <label class="form-check-label" for="useDigits">Use Digits</label>
+              </div>
+              <div class="form-check">
+                <input data-bind="checked: useUnderscores" type="checkbox" class="form-check-input" id="useUnderscores">
+                <label class="form-check-label" for="useUnderscores">Use Spaces</label>
+              </div>
             </section>
           </div>
         </div>
