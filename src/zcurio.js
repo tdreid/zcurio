@@ -54,6 +54,9 @@ const cipherCurioViewModel = function() {
     return plainLtr;
   };
 
+  let running = ko.observable(false);
+  let currentTimer = ko.observable(null);
+
   self.all = (d, e) => e.target.select();
   self.alphabet = alphabet.split('');
   self.error = ko.observable('');
@@ -104,11 +107,23 @@ const cipherCurioViewModel = function() {
   self.useLetters = ko.observable(true);
   self.useDigits = ko.observable(true);
   self.useUnderscores = ko.observable(true);
+  self.pause = ko.observable(3);
   self.plainChars = ko.computed(() => {
     let result = self.useLetters() ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : '';
     result += self.useDigits() ? '0123456789' : '';
     result += self.useUnderscores() ? '_' : '';
     return result;
+  });
+  self.toggle = ko.computed({
+    read: () => running(),
+    write: () => {
+      running(!running());
+      if(running()) {
+        currentTimer(setInterval(self.setRandomKey, self.pause() * 1000));
+      } else {
+        clearInterval(currentTimer());
+      }
+    }
   });
 };
 

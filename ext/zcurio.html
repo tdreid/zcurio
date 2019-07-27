@@ -2,6 +2,7 @@
 <html>
     <head>
         <style>
+            @import url('./css/all.min.css');
             @import url('./css/bootstrap.min.css');
             @import url('./css/main.css');            
         </style>
@@ -31,21 +32,33 @@
               <div data-bind="text: displayKey"></div>
               <div data-bind="visible: error, text: error" class="alert alert-warning"></div>
               <hr />
-              <div>
+              <div class="mb-2">
                 <button class="btn btn-primary" data-bind="click: setRandomKey">Random Key</button>
                 <button class="btn btn-secondary" data-bind="click: resetKey">Reset Key</button>
+                <button class="btn btn-secondary" data-bind="click: toggle" >
+                  <span data-bind="ifnot: toggle">Start</span>
+                  <span data-bind="if: toggle">Pause</span>
+                  <span data-bind="hidden: toggle" class="fa fa-play"></span>
+                  <span data-bind="visible: toggle" class="fa fa-pause"></span>
+                </button>
               </div>
-              <div class="form-check">
-                <input data-bind="checked: useLetters" type="checkbox" class="form-check-input" id="useLetters">
-                <label class="form-check-label" for="useLetters">Use Letters</label>
-              </div>
-              <div class="form-check">
-                  <input data-bind="checked: useDigits" type="checkbox" class="form-check-input" id="useDigits">
-                  <label class="form-check-label" for="useDigits">Use Digits</label>
-              </div>
-              <div class="form-check">
-                <input data-bind="checked: useUnderscores" type="checkbox" class="form-check-input" id="useUnderscores">
-                <label class="form-check-label" for="useUnderscores">Use Spaces</label>
+              <div data-bind="hidden: toggle">
+                <div>
+                  <input data-bind="textInput: pause, disable: toggle" type="number" max="99" min="1" maxlength="2" class="form-control col-2">
+                  <label>Pause between keys (seconds).</label>
+                </div>
+                <div class="form-check">
+                  <input data-bind="checked: useLetters" type="checkbox" class="form-check-input" id="useLetters">
+                  <label class="form-check-label" for="useLetters">Use Letters</label>
+                </div>
+                <div class="form-check">
+                    <input data-bind="checked: useDigits" type="checkbox" class="form-check-input" id="useDigits">
+                    <label class="form-check-label" for="useDigits">Use Digits</label>
+                </div>
+                <div class="form-check">
+                  <input data-bind="checked: useUnderscores" type="checkbox" class="form-check-input" id="useUnderscores">
+                  <label class="form-check-label" for="useUnderscores">Use Spaces</label>
+                </div>      
               </div>
             </section>
           </div>
