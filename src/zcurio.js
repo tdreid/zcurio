@@ -1,4 +1,5 @@
 const rng = require('lodash/random');
+const words = require('./commonwords.js');
 
 ko.extenders.restricted = target => {
   const result = ko
@@ -96,6 +97,8 @@ const cipherCurioViewModel = function() {
       .match(/.{1,17}/g)
       .map(l => l.split('').join(' '))
   );
+  self.commonWords = ko.computed(() => words.filter(w => self.plaintext().includes(w.toUpperCase())));
+  self.commonWordsCount = ko.computed(() => self.commonWords().length);
   self.setRandomKey = () => {
     let result = '';
     self

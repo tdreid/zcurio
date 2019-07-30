@@ -61,6 +61,13 @@
                 </div>      
               </div>
             </section>
+            <hr />
+            <h5>Common words in plain text: <span data-bind="text: commonWordsCount"></span></h5>
+            <section>
+              <ol data-bind="foreach: commonWords">
+                <li data-bind="text: $data"></li>
+              </ol>
+            </section>
           </div>
         </div>
       </main>
